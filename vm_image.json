@@ -1,0 +1,18 @@
+{
+  "builders": [
+    {
+      "type": "googlecompute",
+      "project_id": "application-to-vms-demo",
+      "source_image_family": "centos-7",
+      "zone": "europe-west2-a",
+      "ssh_username": "packer_user",
+      "image_name": "packer-demo-{{timestamp}}"
+    }
+  ],
+  "provisioners": [
+    {
+      "type": "shell",
+      "script": "provision.sh"
+    }
+  ]
+}

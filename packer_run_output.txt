@@ -1,0 +1,109 @@
+➜  packer-gcp-demo git:(master) ✗ packer build vm_image.json 
+googlecompute output will be in this color.
+
+==> googlecompute: Checking image does not exist...
+==> googlecompute: Creating temporary SSH key for instance...
+==> googlecompute: Using image: centos-7-v20190312
+==> googlecompute: Creating instance...
+    googlecompute: Loading zone: europe-west2-a
+    googlecompute: Loading machine type: n1-standard-1
+    googlecompute: Requesting instance creation...
+    googlecompute: Waiting for creation operation to complete...
+    googlecompute: Instance has been created!
+==> googlecompute: Waiting for the instance to become running...
+    googlecompute: IP: 35.246.68.195
+==> googlecompute: Using ssh communicator to connect: 35.246.68.195
+==> googlecompute: Waiting for SSH to become available...
+==> googlecompute: Connected to SSH!
+==> googlecompute: Provisioning with shell script: provision.sh
+    googlecompute: Loaded plugins: fastestmirror
+    googlecompute: Determining fastest mirrors
+    googlecompute:  * base: mirror.fileplanet.com
+    googlecompute:  * epel: d2lzkl7pfhq30w.cloudfront.net
+    googlecompute:  * extras: mirror.fileplanet.com
+    googlecompute:  * updates: repos-lax.psychz.net
+    googlecompute: Resolving Dependencies
+    googlecompute: --> Running transaction check
+    googlecompute: ---> Package httpd.x86_64 0:2.4.6-88.el7.centos will be installed
+    googlecompute: --> Processing Dependency: httpd-tools = 2.4.6-88.el7.centos for package: httpd-2.4.6-88.el7.centos.x86_64
+    googlecompute: --> Processing Dependency: /etc/mime.types for package: httpd-2.4.6-88.el7.centos.x86_64
+    googlecompute: --> Processing Dependency: libaprutil-1.so.0()(64bit) for package: httpd-2.4.6-88.el7.centos.x86_64
+    googlecompute: --> Processing Dependency: libapr-1.so.0()(64bit) for package: httpd-2.4.6-88.el7.centos.x86_64
+    googlecompute: --> Running transaction check
+    googlecompute: ---> Package apr.x86_64 0:1.4.8-3.el7_4.1 will be installed
+    googlecompute: ---> Package apr-util.x86_64 0:1.5.2-6.el7 will be installed
+    googlecompute: ---> Package httpd-tools.x86_64 0:2.4.6-88.el7.centos will be installed
+    googlecompute: ---> Package mailcap.noarch 0:2.1.41-2.el7 will be installed
+    googlecompute: --> Finished Dependency Resolution
+    googlecompute:
+    googlecompute: Dependencies Resolved
+    googlecompute:
+    googlecompute: ================================================================================
+    googlecompute:  Package            Arch          Version                     Repository   Size
+    googlecompute: ================================================================================
+    googlecompute: Installing:
+    googlecompute:  httpd              x86_64        2.4.6-88.el7.centos         base        2.7 M
+    googlecompute: Installing for dependencies:
+    googlecompute:  apr                x86_64        1.4.8-3.el7_4.1             base        103 k
+    googlecompute:  apr-util           x86_64        1.5.2-6.el7                 base         92 k
+    googlecompute:  httpd-tools        x86_64        2.4.6-88.el7.centos         base         90 k
+    googlecompute:  mailcap            noarch        2.1.41-2.el7                base         31 k
+    googlecompute:
+    googlecompute: Transaction Summary
+    googlecompute: ================================================================================
+    googlecompute: Install  1 Package (+4 Dependent packages)
+    googlecompute:
+    googlecompute: Total download size: 3.0 M
+    googlecompute: Installed size: 10 M
+    googlecompute: Downloading packages:
+    googlecompute: --------------------------------------------------------------------------------
+    googlecompute: Total                                              1.8 MB/s | 3.0 MB  00:01
+    googlecompute: Running transaction check
+    googlecompute: Running transaction test
+    googlecompute: Transaction test succeeded
+    googlecompute: Running transaction
+    googlecompute:   Installing : apr-1.4.8-3.el7_4.1.x86_64                                   1/5
+    googlecompute:   Installing : apr-util-1.5.2-6.el7.x86_64                                  2/5
+    googlecompute:   Installing : httpd-tools-2.4.6-88.el7.centos.x86_64                       3/5
+    googlecompute:   Installing : mailcap-2.1.41-2.el7.noarch                                  4/5
+    googlecompute:   Installing : httpd-2.4.6-88.el7.centos.x86_64                             5/5
+    googlecompute:   Verifying  : httpd-tools-2.4.6-88.el7.centos.x86_64                       1/5
+    googlecompute:   Verifying  : apr-1.4.8-3.el7_4.1.x86_64                                   2/5
+    googlecompute:   Verifying  : mailcap-2.1.41-2.el7.noarch                                  3/5
+    googlecompute:   Verifying  : httpd-2.4.6-88.el7.centos.x86_64                             4/5
+    googlecompute:   Verifying  : apr-util-1.5.2-6.el7.x86_64                                  5/5
+    googlecompute:
+    googlecompute: Installed:
+    googlecompute:   httpd.x86_64 0:2.4.6-88.el7.centos
+    googlecompute:
+    googlecompute: Dependency Installed:
+    googlecompute:   apr.x86_64 0:1.4.8-3.el7_4.1                 apr-util.x86_64 0:1.5.2-6.el7
+    googlecompute:   httpd-tools.x86_64 0:2.4.6-88.el7.centos     mailcap.noarch 0:2.1.41-2.el7
+    googlecompute:
+    googlecompute: Complete!
+    googlecompute: ● httpd.service - The Apache HTTP Server
+    googlecompute:    Loaded: loaded (/usr/lib/systemd/system/httpd.service; disabled; vendor preset: disabled)
+    googlecompute:    Active: active (running) since Wed 2019-03-27 14:23:16 UTC; 36ms ago
+    googlecompute:      Docs: man:httpd(8)
+    googlecompute:            man:apachectl(8)
+    googlecompute:  Main PID: 3423 (httpd)
+    googlecompute:    Status: "Processing requests..."
+    googlecompute:    CGroup: /system.slice/httpd.service
+    googlecompute:            ├─3423 /usr/sbin/httpd -DFOREGROUND
+    googlecompute:            ├─3425 /usr/sbin/httpd -DFOREGROUND
+    googlecompute:            ├─3426 /usr/sbin/httpd -DFOREGROUND
+    googlecompute:            ├─3427 /usr/sbin/httpd -DFOREGROUND
+    googlecompute:            ├─3428 /usr/sbin/httpd -DFOREGROUND
+    googlecompute:            └─3429 /usr/sbin/httpd -DFOREGROUND
+    googlecompute:
+    googlecompute: Mar 27 14:23:16 packer-5c9b86ea-ac17-0a19-4610-ac9a0a531ca4 systemd[1]: Starting The Apache HTTP Server...
+    googlecompute: Mar 27 14:23:16 packer-5c9b86ea-ac17-0a19-4610-ac9a0a531ca4 systemd[1]: Started The Apache HTTP Server.
+==> googlecompute: Deleting instance...
+    googlecompute: Instance has been deleted!
+==> googlecompute: Creating image...
+==> googlecompute: Deleting disk...
+    googlecompute: Disk has been deleted!
+Build 'googlecompute' finished.
+
+==> Builds finished. The artifacts of successful builds are:
+--> googlecompute: A disk image was created: packer-demo-1553696490
